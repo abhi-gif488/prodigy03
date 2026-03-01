@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <link rel="stylesheet" href="tictactoe-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Game Header -->
+        <header class="game-header">
+            <h1 class="game-title">
+                <i class="fas fa-gamepad"></i>
+                Tic-Tac-Toe
+            </h1>
+            <p class="game-subtitle">Challenge yourself or play with AI!</p>
+        </header>
+
+        <!-- Game Mode Selection -->
+        <div class="mode-selection" id="modeSelection">
+            <h2>Choose Game Mode</h2>
+            <div class="mode-buttons">
+                <button class="mode-btn" id="pvpMode">
+                    <i class="fas fa-users"></i>
+                    <span>Player vs Player</span>
+                    <small>Play with a friend</small>
+                </button>
+                <button class="mode-btn" id="aiMode">
+                    <i class="fas fa-robot"></i>
+                    <span>Player vs AI</span>
+                    <small>Challenge the computer</small>
+                </button>
+            </div>
+        </div>
+
+        <!-- Difficulty Selection (for AI mode) -->
+        <div class="difficulty-selection hidden" id="difficultySelection">
+            <h2>Choose Difficulty</h2>
+            <div class="difficulty-buttons">
+                <button class="difficulty-btn" data-difficulty="easy">
+                    <i class="fas fa-smile"></i>
+                    <span>Easy</span>
+                </button>
+                <button class="difficulty-btn" data-difficulty="medium">
+                    <i class="fas fa-meh"></i>
+                    <span>Medium</span>
+                </button>
+                <button class="difficulty-btn" data-difficulty="hard">
+                    <i class="fas fa-brain"></i>
+                    <span>Hard</span>
+                </button>
+            </div>
+            <button class="back-btn" id="backToMode">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </div>
+
+        <!-- Game Board -->
+        <div class="game-container hidden" id="gameContainer">
+            <!-- Score Board -->
+            <div class="scoreboard">
+                <div class="score-item player-x">
+                    <i class="fas fa-times"></i>
+                    <div class="score-info">
+                        <span class="player-name">Player X</span>
+                        <span class="score" id="scoreX">0</span>
+                    </div>
+                </div>
+                <div class="score-item draws">
+                    <i class="fas fa-handshake"></i>
+                    <div class="score-info">
+                        <span class="player-name">Draws</span>
+                        <span class="score" id="scoreDraw">0</span>
+                    </div>
+                </div>
+                <div class="score-item player-o">
+                    <i class="fas fa-circle"></i>
+                    <div class="score-info">
+                        <span class="player-name" id="playerOName">Player O</span>
+                        <span class="score" id="scoreO">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Turn Indicator -->
+            <div class="turn-indicator" id="turnIndicator">
+                <i class="fas fa-times"></i>
+                <span id="turnText">Player X's Turn</span>
+            </div>
+
+            <!-- Game Board -->
+            <div class="board" id="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <button class="control-btn restart-btn" id="restartBtn">
+                    <i class="fas fa-redo"></i>
+                    Restart Game
+                </button>
+                <button class="control-btn reset-btn" id="resetBtn">
+                    <i class="fas fa-sync-alt"></i>
+                    Reset Scores
+                </button>
+                <button class="control-btn menu-btn" id="menuBtn">
+                    <i class="fas fa-home"></i>
+                    Main Menu
+                </button>
+            </div>
+        </div>
+
+        <!-- Game Result Modal -->
+        <div class="modal hidden" id="resultModal">
+            <div class="modal-content">
+                <div class="result-icon" id="resultIcon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2 class="result-title" id="resultTitle">Player X Wins!</h2>
+                <p class="result-message" id="resultMessage">Congratulations! You got three in a row!</p>
+                <div class="modal-buttons">
+                    <button class="modal-btn play-again-btn" id="playAgainBtn">
+                        <i class="fas fa-play"></i>
+                        Play Again
+                    </button>
+                    <button class="modal-btn menu-btn-modal" id="menuBtnModal">
+                        <i class="fas fa-home"></i>
+                        Main Menu
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Winning Line Overlay -->
+        <svg class="winning-line hidden" id="winningLine">
+            <line x1="0" y1="0" x2="0" y2="0" stroke="#FFD700" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <script src="tictactoe-script.js"></script>
+</body>
+</html>
